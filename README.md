@@ -13,6 +13,8 @@ En esta publicación encontraras el documento que contiene el marco del proyecto
 
 5) Recuerda que se evalúa calidad del código, completitud del proyecto, funcionalidades, entrega a tiempo, participación de todo el equipo y correcta documentación y pruebas.
 
+![Class diagram](/class-diagram.png)
+
 
 ## Work Team:
 * Alan Said Sanchez Sausameda 307730
