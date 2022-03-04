@@ -32,5 +32,6 @@ npm start
 
 La app será lanzada en el puerto 3000.
 
-License
+Licencia: 
+
 Uso libre. 
