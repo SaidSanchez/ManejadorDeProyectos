@@ -1,9 +1,9 @@
 const express = require('express');
-const controller = require('../controllers/user');
+const controller = require('../controllers/memberTeam');
 const router = express.Router();
 
 router.get('/', function(req, res, next) {
-    res.send('List of user: ');
+    res.send('List of team members: ');
 });
 router.get('/', controller.getAll);
 router.get('/:id', controller.get);
