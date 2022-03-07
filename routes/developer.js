@@ -1,9 +1,9 @@
 const express = require('express');
-const controller = require('../controllers/columns');
+const controller = require('../controllers/developer');
 const router = express.Router();
 
 router.get('/', function(req, res, next) {
-  res.send('Columns');
+  res.send('developer');
 });
 
 router.get('/:id', controller.get);

@@ -1,5 +1,5 @@
 const express = require('express');
-const controller = require('../controllers/userStories');
+const controller = require('../controllers/story');
 const router = express.Router();
 
 router.get('/', function(req, res, next) {
@@ -7,7 +7,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/', controller.getAll);
-router.get('/:id', controller.getByID);
 router.post('/', controller.create);
 router.put('/:id', controller.replace);
 router.patch('/:id', controller.edit);

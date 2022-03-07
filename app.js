@@ -8,13 +8,11 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
 const app = express();
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const storiesRouter = require('./routes/userStories');
+const storiesRouter = require('./routes/story');
 const membersRouter = require('./routes/memberTeam');
 const skillsRouter = require('./routes/skills');
 const filesRouter = require('./routes/proyectFiles');
-const columnsRouter = require('./routes/columns');
+const columnsRouter = require('./routes/developer');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,11 +26,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/userStories', storiesRouter);
+app.use('/story', storiesRouter);
 app.use('/memberTeam', membersRouter);
 app.use('/skills', skillsRouter);
 app.use('/projectFiles', filesRouter);
-app.use('/columns', columnsRouter);
+app.use('/developer', columnsRouter);
 
 
 // catch 404 and forward to error handler
