@@ -3,16 +3,27 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const mongoose = require('mongoose');
+const config = require('config');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-
-const app = express();
 const storiesRouter = require('./routes/story');
 const membersRouter = require('./routes/memberTeam');
 const skillsRouter = require('./routes/skills');
 const filesRouter = require('./routes/proyectFiles');
 const columnsRouter = require('./routes/developer');
+
+mongoose.connect(config.get('database.uri'));
+var database = mongoose.connection;
+var app = express();
+
+database.on('open', () => {
+  console.log('connected to DB!');
+});
+database.on('error', () => {
+  console.log('can not connect to DB');
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

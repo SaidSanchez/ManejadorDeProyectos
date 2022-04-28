@@ -54,8 +54,12 @@ classDiagram
 		-String salt
 		+getId() int
 		+getName() String
-		+getLastName() String
-		+getEmail() String
+		+getDadLastName() String
+		+getMomLastName() String
+		+getBirthday() Date
+		+getCurp() String
+		+getRfc() String
+		+getAddress() String
 		+getSkills() List~Skill~
 		-getPassword() String
 		-getSalt() String
@@ -148,7 +152,7 @@ classDiagram
 * Alan Said Sanchez Sausameda 307730
 * Andrés Romero Ramos 329540
 
-## Installation: 
+## Installation:
 
 Usar el manejador de paquetes npm para instalar las dependencias.
 ```
@@ -162,6 +166,6 @@ npm start
 
 La app será lanzada en el puerto 3000.
 
-Licencia: 
+Licencia:
 
-Uso libre. 
+Uso libre.
