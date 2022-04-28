@@ -1,13 +1,14 @@
 const express = require('express');
-const {Skill, Rank} = require('../models/skill');
+const Board = require('../models/board');
+const Backlog = require('../models/backlog');
 
 function list(req, res, next) {
   const page = req.query.page ? req.query.page : 1;
-  Skill.paginate({}, {page: page, limit: 10})
+  Board.paginate({}, {page: page, limit: 10})
   .then(obj => {
     if(obj.docs.length == 0) res.status(204).send();
     else res.status(200).json({
-      message: res.__n('models.skill', obj.docs.length),
+      message: res.__n('models.board', obj.docs.length),
       data: obj
     });
   })
@@ -16,11 +17,11 @@ function list(req, res, next) {
 
 function index(req, res, next) {
   const id = req.params.id;
-  Skill.findOne({_id: id})
+  Board.findOne({_id: id}).populate('_productBacklog')
   .then(obj => {
     if(obj === null) res.status(404).send();
     else res.status(200).json({
-      message: res.__n('models.skill', 1),
+      message: res.__n('models.board', 1),
       data: obj
     });
   })
@@ -28,33 +29,32 @@ function index(req, res, next) {
 }
 
 function create(req, res, next) {
-  const name = req.body.name;
-  const rank = eval(`Rank.${req.body.rank}.rank`);
-  const skill = new Skill({
-    _name: name,
-    _rank: rank
+  const productBacklog = new Backlog({
+    _name: 'Product Backlog'
   });
-  skill.save()
-  .then(obj => res.status(201).json({
-    message: res.__n('models.skill', 1),
-    data: obj
-  }))
+  productBacklog.save()
+  .then(obj => {
+    const board = new Board({
+      _productBacklog: obj.id
+    });
+    board.save()
+    .then(obj => res.status(201).json({
+      message: res.__n('models.board', 1),
+      data: obj
+    }))
+    .catch(err => res.status(500).json(err));
+  })
   .catch(err => res.status(500).json(err));
 }
 
 function replace(req, res, next) {
   const id = req.params.id;
-  const name = req.body.name;
-  const rank = eval(`Rank.${req.body.rank}.rank`);
-  const skill = new Object({
-    _name: name,
-    _rank: rank
-  });
-  Skill.findOneAndUpdate({_id: id}, skill, {new: true})
+  const board = new Object();
+  Board.findOneAndUpdate({_id: id}, board, {new: true})
   .then(obj => {
     if(obj === null) res.status(404).send();
     else res.status(200).json({
-      message: res.__n('models.skill', 1),
+      message: res.__n('models.board', 1),
       data: obj
     });
   })
@@ -63,14 +63,12 @@ function replace(req, res, next) {
 
 function edit(req, res, next) {
   const id = req.params.id;
-  const skill = new Object();
-  if(req.body.name) skill._name = req.body.name;
-  if(req.body.rank) skill._rank = eval(`Rank.${req.body.rank}.rank`);
-  Skill.findOneAndUpdate({_id: id}, skill, {new: true})
+  const board = new Object();
+  Board.findOneAndUpdate({_id: id}, board, {new: true})
   .then(obj => {
     if(obj === null) res.status(404).send();
     else res.status(200).json({
-      message: res.__n('models.skill', 1),
+      message: res.__n('models.board', 1),
       data: obj
     });
   })
@@ -79,7 +77,7 @@ function edit(req, res, next) {
 
 function destroy(req, res, next) {
   const id = req.params.id;
-  Skill.findOneAndDelete({_id: id})
+  Board.findOneAndDelete({_id: id})
   .then(() => res.status(204).send())
   .catch(err => res.status(500).json(err));
 }

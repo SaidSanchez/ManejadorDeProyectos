@@ -1,13 +1,13 @@
 const express = require('express');
-const {Skill, Rank} = require('../models/skill');
+const Backlog = require('../models/backlog');
 
 function list(req, res, next) {
   const page = req.query.page ? req.query.page : 1;
-  Skill.paginate({}, {page: page, limit: 10})
+  Backlog.paginate({}, {page: page, limit: 10})
   .then(obj => {
     if(obj.docs.length == 0) res.status(204).send();
     else res.status(200).json({
-      message: res.__n('models.skill', obj.docs.length),
+      message: res.__n('models.backlog', obj.docs.length),
       data: obj
     });
   })
@@ -16,11 +16,11 @@ function list(req, res, next) {
 
 function index(req, res, next) {
   const id = req.params.id;
-  Skill.findOne({_id: id})
+  Backlog.findOne({_id: id}).populate('_stories')
   .then(obj => {
     if(obj === null) res.status(404).send();
     else res.status(200).json({
-      message: res.__n('models.skill', 1),
+      message: res.__n('models.backlog', 1),
       data: obj
     });
   })
@@ -29,14 +29,12 @@ function index(req, res, next) {
 
 function create(req, res, next) {
   const name = req.body.name;
-  const rank = eval(`Rank.${req.body.rank}.rank`);
-  const skill = new Skill({
-    _name: name,
-    _rank: rank
+  const backlog = new Backlog({
+    _name: name
   });
-  skill.save()
+  backlog.save()
   .then(obj => res.status(201).json({
-    message: res.__n('models.skill', 1),
+    message: res.__n('models.backlog', 1),
     data: obj
   }))
   .catch(err => res.status(500).json(err));
@@ -45,16 +43,14 @@ function create(req, res, next) {
 function replace(req, res, next) {
   const id = req.params.id;
   const name = req.body.name;
-  const rank = eval(`Rank.${req.body.rank}.rank`);
-  const skill = new Object({
-    _name: name,
-    _rank: rank
+  const backlog = new Object({
+    _name: name
   });
-  Skill.findOneAndUpdate({_id: id}, skill, {new: true})
+  Backlog.findOneAndUpdate({_id: id}, backlog, {new: true})
   .then(obj => {
     if(obj === null) res.status(404).send();
     else res.status(200).json({
-      message: res.__n('models.skill', 1),
+      message: res.__n('models.backlog', 1),
       data: obj
     });
   })
@@ -63,14 +59,13 @@ function replace(req, res, next) {
 
 function edit(req, res, next) {
   const id = req.params.id;
-  const skill = new Object();
-  if(req.body.name) skill._name = req.body.name;
-  if(req.body.rank) skill._rank = eval(`Rank.${req.body.rank}.rank`);
-  Skill.findOneAndUpdate({_id: id}, skill, {new: true})
+  const backlog = new Object();
+  if(req.body.name) backlog._name = req.body.name;
+  Backlog.findOneAndUpdate({_id: id}, backlog, {new: true})
   .then(obj => {
     if(obj === null) res.status(404).send();
     else res.status(200).json({
-      message: res.__n('models.skill', 1),
+      message: res.__n('models.backlog', 1),
       data: obj
     });
   })
@@ -79,7 +74,7 @@ function edit(req, res, next) {
 
 function destroy(req, res, next) {
   const id = req.params.id;
-  Skill.findOneAndDelete({_id: id})
+  Backlog.findOneAndDelete({_id: id})
   .then(() => res.status(204).send())
   .catch(err => res.status(500).json(err));
 }

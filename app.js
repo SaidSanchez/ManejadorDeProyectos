@@ -5,24 +5,33 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const config = require('config');
+const {expressjwt: jwt} = require('express-jwt');
+const i18n = require('i18n');
 
 const indexRouter = require('./routes/index');
+const projectsRouter = require('./routes/projects');
 const usersRouter = require('./routes/users');
-const storiesRouter = require('./routes/story');
-const membersRouter = require('./routes/memberTeam');
 const skillsRouter = require('./routes/skills');
-const filesRouter = require('./routes/proyectFiles');
-const columnsRouter = require('./routes/developer');
+const boardsRouter = require('./routes/boards');
+const backlogsRouter = require('./routes/backlogs');
+const storiesRouter = require('./routes/stories');
 
 mongoose.connect(config.get('database.uri'));
-var database = mongoose.connection;
-var app = express();
+const database = mongoose.connection;
+const app = express();
 
 database.on('open', () => {
   console.log('connected to DB!');
 });
 database.on('error', () => {
   console.log('can not connect to DB');
+});
+
+i18n.configure({
+  locales: ['en'],
+  cookie: 'language',
+  directory: path.join(__dirname, '/locales'),
+  objectNotation: true
 });
 
 // view engine setup
@@ -34,14 +43,23 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+// app.use(
+//   jwt({
+//     secret: 'key',
+//     algorithms: ['HS256']
+//   }).unless({
+//     path: ['/login']
+//   })
+// );
+app.use(i18n.init);
 
 app.use('/', indexRouter);
+app.use('/projects', projectsRouter);
 app.use('/users', usersRouter);
-app.use('/story', storiesRouter);
-app.use('/memberTeam', membersRouter);
 app.use('/skills', skillsRouter);
-app.use('/projectFiles', filesRouter);
-app.use('/developer', columnsRouter);
+app.use('/boards', boardsRouter);
+app.use('/backlogs', backlogsRouter);
+app.use('/stories', storiesRouter);
 
 
 // catch 404 and forward to error handler
