@@ -1,4 +1,4 @@
-# Proyecto reto I: Desarrollar un manejador de proyectos
+# Proyecto reto II: Desarrollar un manejador de proyectos
 
 ## Description:
 En esta publicación encontraras el documento que contiene el marco del proyecto a desarrollar durante el curso y tendrá valor en cada evaluación según los criterios de evaluación. Toma en cuenta las siguientes cuestiones:
@@ -12,6 +12,16 @@ En esta publicación encontraras el documento que contiene el marco del proyecto
 4) Al final de cada periodo existirá una tarea donde se deberá entregar los puntos a evaluar (uno por cada periodo).
 
 5) Recuerda que se evalúa calidad del código, completitud del proyecto, funcionalidades, entrega a tiempo, participación de todo el equipo y correcta documentación y pruebas.
+
+# Segunda parte:
+1) Implemente en su proyecto los componentes de seguridad (JWT y almacenamiento seguro de datos), manejo de ambientes, matriz RBAC, internacionalización y localización.
+
+2) Construya las pruebas usando JEST y Super Test para cada ruta de su proyecto (Respetar la regla del 50%).
+
+3) Comunique su aplicación con el PaaS de Mongodb Atlas.
+
+Como entregable se debe entregar estas tareas concluidas en gitlab y agregar la dirección del servidor web de Heroku donde se encuentra su proyecto de producción, un diagrama de secuencia y un Diagráma de clases (Con los modelos de su proyecto) dentro del archivo readme.md.
+
 
 ### Diagrama de clases
 
