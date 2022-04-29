@@ -173,8 +173,11 @@ Para lanzar el proyecto usamos el comando:
 ```
 npm start
 ```
-
 La app será lanzada en el puerto 3000.
+
+# Aplicación lanzada en heroku con el link:
+
+https://manejadordeproyectos.herokuapp.com/
 
 Licencia:
 
