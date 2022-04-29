@@ -1,0 +1,5 @@
+{
+  "database": {
+    "uri": "mongodb+srv://balux:BNpxV3xsQZoDEcgq@scrum.1xcpe.mongodb.net/scrum?retryWrites=true&w=majority"
+  }
+}
