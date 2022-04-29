@@ -1,0 +1,28 @@
+{
+  "models": {
+    "project": {
+      "one": "proyecto",
+      "other": "proyectos"
+    },
+    "user": {
+      "one": "usuario",
+      "other": "usuarios"
+    },
+    "skill": {
+      "one": "habilidad",
+      "other": "habilidades"
+    },
+    "board": {
+      "one": "board",
+      "other": "boards"
+    },
+    "backlog": {
+      "one": "backlog",
+      "other": "backlogs"
+    },
+    "story": {
+      "one": "historial",
+      "other": "stories"
+    }
+  }
+}

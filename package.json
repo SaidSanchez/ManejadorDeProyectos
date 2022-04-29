@@ -16,11 +16,13 @@
     "express-jwt": "^7.5.2",
     "http-errors": "~1.6.3",
     "i18n": "^0.14.2",
+    "jest": "^28.0.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.1",
     "mongoose-paginate-v2": "^1.6.3",
     "morgan": "~1.9.1",
-    "pug": "2.0.0-beta11"
+    "pug": "2.0.0-beta11",
+    "supertest": "^6.2.3"
   },
   "devDependencies": {
     "supervisor": "^0.12.0"

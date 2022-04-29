@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const config = require('config');
-const {expressjwt: jwt} = require('express-jwt');
+const expressJtw= require('express-jwt');
 const i18n = require('i18n');
 
 const indexRouter = require('./routes/index');
@@ -28,7 +28,7 @@ database.on('error', () => {
 });
 
 i18n.configure({
-  locales: ['en'],
+  locales: ['en','es'],
   cookie: 'language',
   directory: path.join(__dirname, '/locales'),
   objectNotation: true
