@@ -24,5 +24,16 @@
       "one": "story",
       "other": "stories"
     }
-  }
+  },
+
+  "ok.card": "Card List",
+ "bad.card": "Could not query card list",
+ "cr.card": "Card created successfully",
+ "ncr.card": "Could not create card",
+ "rp.card": "Complete card data replacement",
+ "npr.card": "Could not replace card data",
+ "up.card": "Data updated successfully",
+ "nup.card": "Failed to update data",
+ "dl.card": "Card deleted successfully",
+ "ndl.card": "Could not remove card",
 }

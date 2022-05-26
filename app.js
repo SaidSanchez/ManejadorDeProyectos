@@ -15,6 +15,7 @@ const skillsRouter = require('./routes/skills');
 const boardsRouter = require('./routes/boards');
 const backlogsRouter = require('./routes/backlogs');
 const storiesRouter = require('./routes/stories');
+const cardsRouter = require('./routes/cards');
 
 mongoose.connect(config.get('database.uri'));
 const database = mongoose.connection;
@@ -43,6 +44,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 // app.use(
 //   jwt({
 //     secret: 'key',
@@ -60,7 +62,7 @@ app.use('/skills', skillsRouter);
 app.use('/boards', boardsRouter);
 app.use('/backlogs', backlogsRouter);
 app.use('/stories', storiesRouter);
-
+app.use('/cards', cardsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

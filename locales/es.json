@@ -24,5 +24,15 @@
       "one": "historial",
       "other": "stories"
     }
-  }
+  },
+  "ok.card": "Lista de tarjetas",
+  "bad.card": "No se pudo consultar la lista de tarjetas",
+  "cr.card": "Tarjeta creada correctamente",
+  "ncr.card": "No se pudo crear la tarjeta",
+  "rp.card": "Reemplazo de datos de la tarjeta completo",
+  "npr.card": "No se pudo reemplazar los datos de la tarjeta",
+  "up.card": "Datos actualizados correctamente",
+  "nup.card": "No se han podido actualizar los datos",
+  "dl.card": "Tarjeta eliminada correctamente",
+  "ndl.card": "No se pudo eliminar la tarjeta",
 }
