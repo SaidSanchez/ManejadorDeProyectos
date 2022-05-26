@@ -19,10 +19,7 @@ function index(req, res, next) {
   Story.findOne({_id: id})
   .then(obj => {
     if(obj === null) res.status(404).send();
-    else res.status(200).json({
-      message: res.__n('models.story', 1),
-      data: obj
-    });
+    else res.status(200).render('story/show', {story: obj});
   })
   .catch(err => res.status(500).json(err));
 }
