@@ -50,7 +50,7 @@ class Story {
   }
 
   get validated() {
-    return this._validated;
+    return this._validated ? '👍🏼' : '👎🏼';
   }
   set validated(v) {
     this._validated = v;

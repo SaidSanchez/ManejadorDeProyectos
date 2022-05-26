@@ -2,6 +2,27 @@ extends ../layout
 
 block content
   h1= story.name
-  p Priority: #{story.priority}
-  p Size: #{story.size}
+  //p Priority: #{story.priority}
+  label Size
+  select(id='size')
+    option(value=story.size)= story.size
+    if story.size != 1
+      option(value=1) 1
+    if story.size != 2
+      option(value=2) 2
+    if story.size != 3
+      option(value=3) 3
+    if story.size != 5
+      option(value=5) 5
+    if story.size != 8
+      option(value=8) 8
+    if story.size != 13
+      option(value=13) 13
+    if story.size != 21
+      option(value=21) 21
   p= story.feature
+  p= story.validated
+  form
+    input(type='button' value='Validate')
+
+  script(src='/scripts/story.js')
