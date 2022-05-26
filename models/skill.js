@@ -13,6 +13,11 @@ class Rank {
   constructor(rank) {
     this.rank = rank;
   }
+  static toString(rank) {
+    if(rank == 0) return 'junior';
+    if(rank == 1) return 'senior';
+    if(rank == 2) return 'master';
+  }
 }
 
 class Skill {
@@ -26,7 +31,7 @@ class Skill {
   }
 
   get rank() {
-    return this._rank;
+    return Rank.toString(this._rank);
   }
 }
 

@@ -22,10 +22,7 @@ function index(req, res, next) {
   User.findOne({_id: id}).populate('_skills')
   .then(obj => {
     if(obj === null) res.status(404).send();
-    else res.status(200).json({
-      message: res.__n('models.user', 1),
-      data: obj
-    });
+    else res.status(200).render('user/show', {user: obj});
   })
   .catch(err => res.status(500).json(err));
 }

@@ -47,7 +47,7 @@ class User {
   }
 
   get birthday() {
-    return this._birthday;
+    return this._birthday.toDateString();
   }
 
   get curp() {

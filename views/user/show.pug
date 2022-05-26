@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  h1= user.name
+  b #{user.dadLastName} #{user.momLastName}
+  p= user.birthday
+  p CURP: #{user.curp}
+  p RFC: #{user.rfc}
+  p Address: #{user.address}
+  table
+    thead
+      tr
+        th Skill
+        th Rank
+    tbody
+      each skill in user.skills
+        tr
+          td= skill.name
+          td= skill.rank
