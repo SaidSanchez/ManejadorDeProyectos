@@ -42,11 +42,11 @@ class Project {
   }
 
   get requestDate() {
-    return this._requestDate;
+    return this._requestDate.toDateString();
   }
 
   get startDate() {
-    return this._startDate;
+    return this._startDate.toDateString();
   }
 
   get description() {

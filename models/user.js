@@ -77,6 +77,9 @@ class User {
     return this._salt;
   }
 
+  getFullName() {
+    return `${this._name} ${this._dadLastName} ${this._momLastName}`;
+  }
   addSkill(id) {}
   removeSkill(id) {}
 
