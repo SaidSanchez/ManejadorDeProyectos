@@ -7,3 +7,10 @@ block content
   p Request: #{project.startDate}
   p Product Owner: #{project.productOwner.getFullName()}
   p Scrum Master: #{project.scrumMaster.getFullName()}
+  b Team
+  table
+    tbody
+      each member in project.team
+        tr
+          td
+            a(href=`/users/${member.id}`)= member.getFullName()

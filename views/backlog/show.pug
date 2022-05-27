@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+  h1= backlog.name
+  h3 🏎 #{Math.round(backlog.burndown[0]*100/backlog.burndown.length)/100} hr/d
+  h3 ✅ #{22 - backlog.burndown.length} días para liberación
+  canvas(id='burndown' width='800' height='500')
+
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js')
+  script.
+    var remaining = !{JSON.stringify(backlog.burndown)};
+  script(src='/scripts/chart.js')

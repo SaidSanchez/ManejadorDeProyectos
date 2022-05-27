@@ -19,7 +19,7 @@ function list(req, res, next) {
 
 function index(req, res, next) {
   const id = req.params.id;
-  Project.findOne({_id: id}).populate('_productOwner').populate('_scrumMaster')
+  Project.findOne({_id: id}).populate('_productOwner').populate('_scrumMaster').populate('_team')
   .then(obj => {
     if(obj === null) res.status(404).send();
     else res.status(200).render('project/show', {project: obj});

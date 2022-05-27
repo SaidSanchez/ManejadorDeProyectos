@@ -19,10 +19,7 @@ function index(req, res, next) {
   Backlog.findOne({_id: id}).populate('_stories')
   .then(obj => {
     if(obj === null) res.status(404).send();
-    else res.status(200).json({
-      message: res.__n('models.backlog', 1),
-      data: obj
-    });
+    else res.status(200).render('backlog/show', {backlog: obj});
   })
   .catch(err => res.status(500).json(err));
 }
