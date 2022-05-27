@@ -13,6 +13,9 @@ block content
                 th Dado
                 th Cuando
                 th Entonces
+                th Tamaño
+                th Prioridad
+                th Validada
                 th
                     a(href="/cards/add") Nuevo
         tbody
@@ -26,6 +29,9 @@ block content
                     td= card.context
                     td= card.events
                     td= card.results
+                    td= card.size
+                    td= card.priority
+                    td= card.validated
                     td
                         a(href='#') Editar
                         form(method='POST')

@@ -34,6 +34,7 @@ function create(req, res, next){
     const results = req.body.results;
     const priority = req.body.priority;
     const size = req.body.size;
+    const validated = req.body.validated;
 
     let card = new Card({
         narrative:narrative,
@@ -46,6 +47,7 @@ function create(req, res, next){
         results:results,
         priority:priority,
         size:size,
+        validated:validated
     });
 
     card.save().then(obj => res.redirect ('cards/'))
@@ -81,6 +83,7 @@ function edit(req, res, next){
     let name = req.body.name;
     let priority = req.body.priority;
     let size = req.body.size;
+    let validated = req.body.validated;
 
     let card = new Object();
 
@@ -92,6 +95,9 @@ function edit(req, res, next){
     }
     if(size){
         project._size = size;
+    }
+    if(validated){
+        project._validated = validated;
     }
 
     Card.findOneAndUpdate({"_id":id}, card).then(obj => res.status(200).json({

@@ -1,9 +1,6 @@
 var mongoose = require('mongoose');
 var mongoosePaginate = require('mongoose-paginate-v2');
 
-var mongoose = require('mongoose');
-var mongoosePaginate = require('mongoose-paginate-v2');
-
 var schema = new mongoose.Schema({
   _narrative: String,
   _rol: String,
@@ -15,11 +12,12 @@ var schema = new mongoose.Schema({
   _results: String,
   _size: Number,
   _priority: Number,
+  _validated: Boolean
 });
 
 class Card {
   constructor(narrative, rol, functionality, benefit, criteria,
-              context, events, results, priority, size) {
+              context, events, results, priority, size, validated) {
     this._narrative = narrative;
     this._rol = rol;
     this._functionality = functionality;
@@ -30,6 +28,7 @@ class Card {
     this._results = results;
     this._size = size;
     this._priority = priority;
+    this._validated = validated;
   }
 
   set narrative(v) {
@@ -92,6 +91,12 @@ class Card {
   }
   get priority() {
     return this._priority;
+  }
+  set validated(v) {
+    this._validated = v;
+  }
+  get validated() {
+    return this._validated ? '👍🏼' : '👎🏼';
   }
 
 }
