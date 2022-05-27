@@ -88,16 +88,16 @@ function edit(req, res, next){
     let card = new Object();
 
     if(name){
-        project._name = name;
+        card._name = name;
     }
     if(priority){
-        project._priority = priority;
+        card._priority = priority;
     }
     if(size){
-        project._size = size;
+        card._size = size;
     }
     if(validated){
-        project._validated = validated;
+        card._validated = validated;
     }
 
     Card.findOneAndUpdate({"_id":id}, card).then(obj => res.status(200).json({
