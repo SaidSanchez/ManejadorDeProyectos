@@ -24,6 +24,7 @@ class Card {
     this._rol = rol;
     this._functionality = functionality;
     this._benefit = benefit;
+    this._criteria = criteria;
     this._context = context;
     this._events = events;
     this._results = results;
@@ -54,6 +55,12 @@ class Card {
   }
   get benefit() {
     return this._benefit;
+  }
+  set criteria(v) {
+    this._criteria = v;
+  }
+  get criteria() {
+    return this._criteria;
   }
   set context(v) {
     this._context = v;
