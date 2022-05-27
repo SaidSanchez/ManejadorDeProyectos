@@ -20,7 +20,7 @@ function index(req, res, next){
 }
 
 function add(req, res, next) {
-    res.render('card/titles', {});
+    res.render('card/card', {});
 }
 
 function create(req, res, next){

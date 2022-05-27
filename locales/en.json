@@ -1,39 +1,8 @@
 {
-  "models": {
-    "project": {
-      "one": "project",
-      "other": "projects"
-    },
-    "user": {
-      "one": "user",
-      "other": "users"
-    },
-    "skill": {
-      "one": "skill",
-      "other": "skills"
-    },
-    "board": {
-      "one": "board",
-      "other": "boards"
-    },
-    "backlog": {
-      "one": "backlog",
-      "other": "backlogs"
-    },
-    "story": {
-      "one": "story",
-      "other": "stories"
-    }
-  },
-
-  "ok.card": "Card List",
- "bad.card": "Could not query card list",
- "cr.card": "Card created successfully",
- "ncr.card": "Could not create card",
- "rp.card": "Complete card data replacement",
- "npr.card": "Could not replace card data",
- "up.card": "Data updated successfully",
- "nup.card": "Failed to update data",
- "dl.card": "Card deleted successfully",
- "ndl.card": "Could not remove card",
+	"up": {
+		"card": "up.card"
+	},
+	"bad": {
+		"card": "bad.card"
+	}
 }
